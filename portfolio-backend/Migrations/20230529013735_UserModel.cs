@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using System.Data;
 
 #nullable disable
 
@@ -25,9 +26,10 @@ namespace portfoliobackend.Migrations
                     Password = table.Column<string>(type: "text", nullable: false),
                     Status = table.Column<string>(type: "text", nullable: false),
                     Login = table.Column<string>(type: "text", nullable: false)
+                    
                 },
                 constraints: table =>
-                {
+                {  
                     table.PrimaryKey("PK_Users", x => x.Id);
                 });
         }

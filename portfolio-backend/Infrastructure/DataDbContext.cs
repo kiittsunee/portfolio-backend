@@ -16,5 +16,10 @@ namespace DotNetApi.Infrastructure
             .Build();
             optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<User>().HasIndex(prop => prop.Email).IsUnique(true);
+        }
     }
 }

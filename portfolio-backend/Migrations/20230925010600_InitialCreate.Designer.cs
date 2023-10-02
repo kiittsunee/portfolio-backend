@@ -41,7 +41,8 @@ namespace portfoliobackend.Migrations
                         .HasColumnType("text");
 
                     b.Property<int>("IdOfOrganization")
-                        .HasColumnType("integer");
+                       .IsRequired()
+                       .HasColumnType("integer");
 
                     b.Property<string>("Login")
                         .IsRequired()
@@ -64,6 +65,9 @@ namespace portfoliobackend.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                    .IsUnique();
 
                     b.ToTable("Users");
                 });

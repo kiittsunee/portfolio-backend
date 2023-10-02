@@ -33,7 +33,7 @@ namespace portfoliobackend.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("IdOfOrganization")
-                       .ValueGeneratedOnAdd()
+                       .IsRequired()
                        .HasColumnType("integer");
 
                     b.Property<string>("Email")
@@ -65,6 +65,9 @@ namespace portfoliobackend.Migrations
                        .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                    .IsUnique();
 
                     b.ToTable("Users");
                 });

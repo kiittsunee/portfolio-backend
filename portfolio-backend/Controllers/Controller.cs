@@ -82,6 +82,10 @@ public class UsersController : ControllerBase
     public async Task<ActionResult<UserDTO>> PostUser(UserDTO userDTO)
     {
         Methods methods = new Methods();
+        if (_context.Users.Any(u => u.Email == userDTO.Email))
+        {
+            return BadRequest("Такой Email уже существует");
+        }
         var User = new User
         {
             Id = userDTO.Id,
